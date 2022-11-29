@@ -16,6 +16,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import {MatTableModule} from "@angular/material/table";
 import {MatPaginatorModule} from "@angular/material/paginator";
+import {MatInputModule} from "@angular/material/input";
+import {MatSlideToggleModule} from "@angular/material/slide-toggle";
 
 @NgModule({
   declarations: [
@@ -36,7 +38,9 @@ import {MatPaginatorModule} from "@angular/material/paginator";
     MatIconModule,
     MatListModule,
     MatTableModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatInputModule,
+    MatSlideToggleModule
   ],
   providers: [],
   bootstrap: [AppComponent]
