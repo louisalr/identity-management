@@ -14,7 +14,6 @@ export class LdapListComponent implements OnInit {
 
   displayedColumns: string [] = ['nomComplet', 'mail', 'employeNumero'];
   dataSource = new MatTableDataSource<UserLdap>([]);
-  data = LDAP_USERS
 
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator
 
@@ -22,9 +21,7 @@ export class LdapListComponent implements OnInit {
 
   ngOnInit(): void {
     this.dataSource.paginator = this.paginator;
-    //this.dataSource.filterPredicate(data: UserLdap, filter:string) => this.filterPredicate(data, filter)
-
-    //this.dataSource.filterPredicate() => this.filterPredicate()
+    this.dataSource.filterPredicate = (data, filter:string) => this.filterPredicate(data, filter);
     this.getUsers();
   }
 
@@ -34,6 +31,7 @@ export class LdapListComponent implements OnInit {
 
   applyFilter($event: KeyboardEvent): void{
     const filterValue = ($event.target as HTMLInputElement).value;
+    console.log(filterValue)
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
