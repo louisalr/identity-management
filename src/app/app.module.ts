@@ -18,16 +18,21 @@ import {MatTableModule} from "@angular/material/table";
 import {MatPaginatorModule} from "@angular/material/paginator";
 import {MatInputModule} from "@angular/material/input";
 import {MatSlideToggleModule} from "@angular/material/slide-toggle";
+import { LdapDetailComponent } from './ldap-detail/ldap-detail.component';
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
     AppComponent,
     LdapListComponent,
     PageNotFoundComponent,
-    NavbarComponent
+    NavbarComponent,
+    LdapDetailComponent
   ],
   imports: [
     BrowserModule,
+    FormsModule,
+    ReactiveFormsModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     AppMaterialModule,
