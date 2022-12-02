@@ -10,6 +10,8 @@
   <span>&nbsp; En cours de chargement ...</span>
 </section>
 
+<app-alert *ngIf="errorMessage.length > 0" [type]="'danger'"> {{errorMessage }}</app-alert>
+
 <form class="user-form" *ngIf="processLoadRunning==false"
       [formGroup]="userForm"
       (ngSubmit)="onSubmitForm()">
@@ -22,6 +24,7 @@
                  id="nom" formControlName="nom" required
                  (input)="updateLogin()"
           />
+          <mat-error> Le nom est requis</mat-error>
         </mat-form-field>
       </td>
 
@@ -31,6 +34,7 @@
                  id="prenom" formControlName="prenom" required
                  (input)="updateLogin()"
           />
+          <mat-error> Le prénom est requis</mat-error>
         </mat-form-field>
       </td>
     </tr>
@@ -44,6 +48,7 @@
                  id="login" formControlName="login" required
                  (input)="updateMail()"
           />
+          <mat-error> Le login est requis</mat-error>
         </mat-form-field>
       </td>
 
@@ -65,7 +70,9 @@
          <input type="password" matInput
                 [placeholder]="passwordPlaceHolder"
                 id="password" formControlName="password"
+                [errorStateMatcher]="confirmValidParentMatcher"
          >
+          <mat-error> Les mots de passe doivent etre identiques</mat-error>
         </mat-form-field>
       </td>
 
@@ -74,7 +81,9 @@
           <input type="password" matInput class="form-control"
                  placeholder="Vérificication du mot de passe"
                  id="confirmPassword" formControlName="confirmPassword"
+                 [errorStateMatcher]="confirmValidParentMatcher"
           >
+          <mat-error> Les mots de passe doivent etre identiques</mat-error>
         </mat-form-field>
       </td>
     </tr>

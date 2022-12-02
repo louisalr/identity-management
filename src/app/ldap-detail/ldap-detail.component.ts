@@ -3,6 +3,7 @@ import { Location } from '@angular/common';
 import {UserLdap} from "../model/user-ldap";
 import {UsersService} from "../service/users.service";
 import {FormBuilder} from "@angular/forms";
+import {ConfirmValidParentMatcher, passwordsValidator} from "./passwords-validator.directive";
 
 
 export abstract class LdapDetailComponent {
@@ -12,6 +13,9 @@ export abstract class LdapDetailComponent {
   processValidateRunning = false;
 
   passwordPlaceHolder: string;
+  errorMessage = '';
+
+  confirmValidParentMatcher = new ConfirmValidParentMatcher();
 
   userForm = this.fb.group({
     login: [''],
@@ -20,7 +24,7 @@ export abstract class LdapDetailComponent {
     passwordGroup: this.fb.group({
       password: [''],
       confirmPassword:  ['']
-    }),
+    }, {validators: passwordsValidator}),
     mail: {value: '', disabled: true}
   })
 
