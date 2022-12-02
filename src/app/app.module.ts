@@ -18,8 +18,9 @@ import {MatTableModule} from "@angular/material/table";
 import {MatPaginatorModule} from "@angular/material/paginator";
 import {MatInputModule} from "@angular/material/input";
 import {MatSlideToggleModule} from "@angular/material/slide-toggle";
-import { LdapDetailComponent } from './ldap-detail/ldap-detail.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import { LdapEditComponent } from './ldap-edit/ldap-edit.component';
+import { LdapAddComponent } from './ldap-add/ldap-add.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
     LdapListComponent,
     PageNotFoundComponent,
     NavbarComponent,
-    LdapDetailComponent
+    LdapEditComponent,
+    LdapAddComponent
   ],
   imports: [
     BrowserModule,
