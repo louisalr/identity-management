@@ -23,6 +23,7 @@ import { LdapEditComponent } from './ldap-management/ldap-edit/ldap-edit.compone
 import { LdapAddComponent } from './ldap-management/ldap-add/ldap-add.component';
 import { AlertComponent } from './share/alert/alert.component';
 import { LdapManagementModule } from './ldap-management/ldap-management.module';
+import {MatButtonModule} from "@angular/material/button";
 
 @NgModule({
   declarations: [
@@ -30,21 +31,22 @@ import { LdapManagementModule } from './ldap-management/ldap-management.module';
     PageNotFoundComponent,
     NavbarComponent,
   ],
-  imports: [
-    BrowserModule,
-    FormsModule,
-    ReactiveFormsModule,
-    LdapManagementModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    AppMaterialModule,
-    LayoutModule,
-    MatSidenavModule,
-    MatSnackBarModule,
-    MatIconModule,
-    MatToolbarModule,
-    MatListModule,
-  ],
+    imports: [
+        BrowserModule,
+        FormsModule,
+        ReactiveFormsModule,
+        LdapManagementModule,
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        AppMaterialModule,
+        LayoutModule,
+        MatSidenavModule,
+        MatSnackBarModule,
+        MatIconModule,
+        MatToolbarModule,
+        MatListModule,
+        MatButtonModule,
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })
