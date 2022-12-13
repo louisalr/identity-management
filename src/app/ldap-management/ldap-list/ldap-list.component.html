@@ -1,10 +1,5 @@
 <div class="mat-elevation-z8">
 
-  <button mat-raised-button color="primary"
-      (click)="addUser()">
-  </button><br /><br />
-
-
   <div class="toolbar-filter">
     <mat-form-field style="width: 40%">
       <mat-label> Nom complet </mat-label>
@@ -35,9 +30,10 @@
       <td mat-cell *matCellDef="let element"> {{element.employeNumero}}</td>
     </ng-container>
 
+
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns;"
-        (click)="edit(row.login)">
+        (click)="edit(row.id)">
     </tr>
 
   </table>
@@ -47,4 +43,10 @@
     showFirstLastButtons>
 
   </mat-paginator>
+
+  <div class="mat-elevation-z8">
+    <button mat-raised-button color="primary" (click)="addUser()">
+      Ajout d'un utilisateur
+    </button>
+  </div>
 </div>

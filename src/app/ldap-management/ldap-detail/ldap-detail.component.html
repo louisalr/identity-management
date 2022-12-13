@@ -18,6 +18,16 @@
 
   <table class="user-full-width">
     <tr>
+
+      <td>
+        <mat-form-field class="user-full-width">
+          <input matInput class="form-control" placeholder="{{addForm ? 'Will be auto-generated' : ''}}"
+                 id="id" formControlName="id"
+          />
+        </mat-form-field>
+      </td>
+
+
       <td>
         <mat-form-field class="user-full-width">
           <input matInput class="form-control" placeholder="Nom de l'utilisateur"
@@ -79,7 +89,7 @@
       <td>
         <mat-form-field class="user-full-width">
           <input type="password" matInput class="form-control"
-                 placeholder="Vérificication du mot de passe"
+                 placeholder="Vérification du mot de passe"
                  id="confirmPassword" formControlName="confirmPassword"
                  [errorStateMatcher]="confirmValidParentMatcher"
           >
@@ -88,6 +98,8 @@
       </td>
     </tr>
   </table>
+
+
 
   <div style="display:flex; justify-content: flex-end;">
     <button type="submit" mat-stroked-button color="primary"
@@ -100,3 +112,7 @@
   </div>
 </form>
 
+<div *ngIf="!addForm" style="display:flex">
+  <button type="submit" mat-stroked-button color="primary" (click)="deleteUser()">    Supprimer utilisateur
+  </button>
+</div>
