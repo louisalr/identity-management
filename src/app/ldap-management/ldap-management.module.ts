@@ -17,7 +17,9 @@ import {MatTableModule} from "@angular/material/table";
 import {MatPaginatorModule} from "@angular/material/paginator";
 import {MatInputModule} from "@angular/material/input";
 import {MatSlideToggleModule} from "@angular/material/slide-toggle";
-
+import {HttpClientModule} from "@angular/common/http";
+import {HttpClientInMemoryWebApiModule} from "angular-in-memory-web-api";
+import {InMemoryUsersService} from "../service/in-memory-users.service";
 
 @NgModule({
   declarations: [
@@ -41,6 +43,10 @@ import {MatSlideToggleModule} from "@angular/material/slide-toggle";
     MatInputModule,
     MatSlideToggleModule,
     MatIconModule,
+    HttpClientModule,
+    HttpClientInMemoryWebApiModule.forRoot(
+      InMemoryUsersService, {dataEncapsulation: false}
+    ),
   ]
 })
 export class LdapManagementModule { }
