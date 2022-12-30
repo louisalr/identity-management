@@ -27,6 +27,7 @@ export class LdapEditComponent extends LdapDetailComponent implements OnInit {
   validateForm(): void{
     console.log('LdapEditComponent');
     this.processValidateRunning = true;
+    console.log(this.getUserFromFormControl())
     this.usersService.updateUser(this.getUserFromFormControl()).subscribe(
       data => {
         this.processValidateRunning = false;
@@ -42,20 +43,23 @@ export class LdapEditComponent extends LdapDetailComponent implements OnInit {
   }
 
   private getUser(): void{
-    const login = this.route.snapshot.paramMap.get('id');
-    this.processValidateRunning = true;
-    this.usersService.getUser(login).subscribe(
-      user => {
-        this.user = user;
-        this.copyUserToFromControl();
-        this.processLoadRunning= false;
-      },
-      error => {
-        this.processLoadRunning = false;
-        this.errorMessage = "L'utilisateur n'existe pas";
-        this.snackBar.open("Utilisateur non trouvé")
-      }
-    )
+    const id = parseInt(this.route.snapshot.paramMap.get('id'));
+    this.usersService.getUser(id).subscribe(user => {
+      this.user = user;
+      this.copyUserToFormControl();
+      this.processLoadRunning= false;
+    }, error => {
+      this.processLoadRunning = false;
+      this.errorMessage = "L'utilisateur n'existe pas";
+      this.snackBar.open("Utilisateur non trouvé")
+    });
   }
+
+  /*
+  override navigateOrDelete(newe) {
+    const id = parseInt(this.route.snapshot.paramMap.get('id'));
+    this.usersService.deleteUser(id);
+    this.router.navigate(['/users/list']);
+  }*/
 
 }

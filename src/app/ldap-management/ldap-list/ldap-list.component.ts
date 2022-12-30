@@ -13,7 +13,7 @@ import {Router} from "@angular/router";
 })
 export class LdapListComponent implements OnInit {
 
-  displayedColumns: string [] = ['nomComplet', 'mail', 'employeNumero'];
+  displayedColumns: string [] = ['nomComplet', 'mail', 'employeNumero', 'edit', 'delete'];
   dataSource = new MatTableDataSource<UserLdap>([]);
 
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator
@@ -56,8 +56,8 @@ export class LdapListComponent implements OnInit {
     this.getUsers()
   }
 
-  edit(login: string){
-    this.router.navigate(['/user', login]).then( (e) => {
+  edit(id: number){
+    this.router.navigate(['/user', id]).then( (e) => {
       if(! e){
         console.log("Navigation has failed")
       }
@@ -70,6 +70,11 @@ export class LdapListComponent implements OnInit {
         console.log("Navigation has failed (ldap-list)")
       }
     })
+  }
+
+  deleteUser(id){
+    console.log('test');
+    this.usersService.deleteUser(id);
   }
 
 }

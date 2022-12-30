@@ -30,7 +30,7 @@ export abstract class LdapDetailComponent {
 
   protected constructor(public addForm: boolean,
                         private fb: FormBuilder,
-                        private router: Router) {
+                        protected router: Router) {
     this.passwordPlaceHolder = 'Mot de passe ' + (this.addForm ? '' : ' (vide si inchangé)');
   }
 
@@ -41,17 +41,8 @@ export abstract class LdapDetailComponent {
 
   isFormValid(): boolean{
     return this.userForm.valid &&
-      (!this.addForm || this.formGetValue('passwordGroup.password') !== '')
+      (!this.addForm || this.formGetValue('passwordGroup.password') !== '');
   }
-
-  /*
-  private getUser(): void{
-    const login = this.route.snapshot.paramMap.get('id');
-
-    this.usersService.getUser(login).subscribe(
-      user => { this.user = user; console.log("LdapDetail getUser = "); console.log(user);}
-    )
-  }*/
 
   private formGetValue(name: string): any {
     return this.userForm.get(name).value;
@@ -61,9 +52,10 @@ export abstract class LdapDetailComponent {
     this.router.navigate(['/users/list'])
   }
 
-  abstract  validateForm(): void;
+  abstract validateForm(): void;
 
-  onSubmitForm(): void {
+  onSubmitForm() {
+    console.log("Submit du form")
     this.validateForm()
   }
 
@@ -81,7 +73,7 @@ export abstract class LdapDetailComponent {
     }
   }
 
-  protected copyUserToFromControl(): void{
+  protected copyUserToFormControl(): void{
     this.userForm.get('login').setValue(this.user.login)
     this.userForm.get('nom').setValue(this.user.nom)
     this.userForm.get('prenom').setValue(this.user.prenom)
@@ -90,6 +82,7 @@ export abstract class LdapDetailComponent {
 
   protected getUserFromFormControl(): UserLdap{
     return{
+      id: 1,
       login: this.userForm.get('login').value,
       nom: this.userForm.get('nom').value,
       prenom: this.userForm.get('prenom').value,

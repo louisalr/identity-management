@@ -35,9 +35,23 @@
       <td mat-cell *matCellDef="let element"> {{element.employeNumero}}</td>
     </ng-container>
 
+    <ng-container matColumnDef="edit">
+      <mat-header-cell  *matHeaderCellDef >  </mat-header-cell>
+      <mat-cell *matCellDef="let row" >
+        <button mat-raised-button color="primary" (click)="edit(row.id)" >Edit</button>
+      </mat-cell>
+    </ng-container>
+
+
+    <ng-container matColumnDef="delete">
+      <mat-header-cell  *matHeaderCellDef >  </mat-header-cell>
+      <mat-cell *matCellDef="let row" >
+        <button mat-raised-button color="warn" (click)="deleteUser(row.id)" >Delete</button>
+      </mat-cell>
+    </ng-container>
+
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-    <tr mat-row *matRowDef="let row; columns: displayedColumns;"
-        (click)="edit(row.login)">
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;">
     </tr>
 
   </table>
@@ -47,4 +61,10 @@
     showFirstLastButtons>
 
   </mat-paginator>
+
+  <div class="mat-elevation-z8">
+    <button mat-raised-button color="primary" (click)="addUser()">
+      Ajout d'un utilisateur
+    </button>
+  </div>
 </div>
