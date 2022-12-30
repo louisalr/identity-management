@@ -24,6 +24,9 @@ import { LdapAddComponent } from './ldap-management/ldap-add/ldap-add.component'
 import { AlertComponent } from './share/alert/alert.component';
 import { LdapManagementModule } from './ldap-management/ldap-management.module';
 import {MatButtonModule} from "@angular/material/button";
+import {HttpClientModule} from "@angular/common/http";
+import {HttpClientInMemoryWebApiModule} from "angular-in-memory-web-api";
+import {InMemoryUsersService} from "./service/in-memory-users.service";
 
 @NgModule({
   declarations: [
@@ -46,6 +49,10 @@ import {MatButtonModule} from "@angular/material/button";
         MatToolbarModule,
         MatListModule,
         MatButtonModule,
+        HttpClientModule,
+        HttpClientInMemoryWebApiModule.forRoot(
+          InMemoryUsersService, {dataEncapsulation: false}
+        )
     ],
   providers: [],
   bootstrap: [AppComponent]
